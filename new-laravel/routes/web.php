@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// HOME ROUTE
+
 Route::get('/', function () {
     return view('home', [
         'title' => 'Internet Plankton | Home',
         'active' => 'home'
     ]);
 });
+
+// ABOUT ROUTE
 
 Route::get('/about', function () {
     return view('about', [
@@ -30,9 +36,15 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/posts', function () {
-    return view('posts', ['title' => 'Posts Page']);
-});
+// ALL POST ROUTE
+
+Route::get('/posts', [PostController::class, 'index']);
+
+// SINGLE POST ROUTE
+
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+
+// LOGIN ROUTE
 
 Route::get('/login', function () {
     return view('login.index', [
