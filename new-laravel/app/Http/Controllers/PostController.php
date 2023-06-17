@@ -12,7 +12,9 @@ class PostController extends Controller
         return view('posts', [
             'title' => 'All Posts',
             'active' => 'posts',
-            'posts' => Post::all()
+            "head" => "",
+            // 'posts' => Post::all()
+            'posts' => Post::latest()->get()
         ]);
     }
 

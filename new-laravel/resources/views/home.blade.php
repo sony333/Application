@@ -2,6 +2,6 @@
 
 @section('container')
 
-<h1>Welcome Guest</h1>
+<h1 class="head">Welcome Guest</h1>
 
 @endsection

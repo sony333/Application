@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +52,39 @@ Route::get('/login', function () {
     return view('login.index', [
         'title' => 'Halaman Login',
         'active' => 'login'
+    ]);
+});
+
+
+// CATEGORIES ROUTE
+
+Route::get('/categories', function () {
+    return view('categories', [
+        'title' => 'Post Categories',
+        'active' => 'categories',
+        'categories' => Category::all()
+    ]);
+});
+
+// CATEGORY POSTS ROUTE
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'title' => $category->name,
+        'active' => '',
+        'posts' => $category->posts,
+        "head" => 'in ' .  $category->name
+    ]);
+});
+
+// AUTHOR ROUTE
+
+Route::get('/author/{author:username}', function (User $author) {
+    return view('posts', [
+        'title' => $author->name,
+        'active' => '',
+        'posts' => $author->posts,
+        "head" => 'by ' .  $author->name
+
     ]);
 });

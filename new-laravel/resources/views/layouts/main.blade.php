@@ -14,6 +14,12 @@
 
     <!-- css -->
     <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="/resources/css/app.css"> -->
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
     <title>Internet Plankton {{ $title }}</title>
 
 </head>

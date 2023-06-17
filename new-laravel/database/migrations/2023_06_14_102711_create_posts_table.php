@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id'); // menghubungkan category dengan post 
+            $table->foreignId('user_id');
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('excerpt');
@@ -26,4 +27,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-  
+    public function down(): void
+    {
+        Schema::dropIfExists('posts');
+    }
+};
