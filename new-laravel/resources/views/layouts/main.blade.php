@@ -14,7 +14,9 @@
 
     <!-- css -->
     <link rel="stylesheet" href="/css/style.css">
-    <!-- <link rel="stylesheet" href="/resources/css/app.css"> -->
+
+    <!-- trix -->
+
     <style>
         a {
             text-decoration: none;

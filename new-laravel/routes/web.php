@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardPostController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -24,7 +25,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function () {
     return view('home', [
         'title' => 'Internet Plankton | Home',
-        'active' => 'home'
     ]);
 });
 
@@ -33,7 +33,6 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about', [
         'title' => 'About Me',
-        'active' => 'about',
         'nama' => 'Sony Tri',
         'email' => 'tri@gmail.com',
         'image' => 'sony.jpg'
@@ -52,8 +51,7 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/login', function () {
     return view('login.index', [
-        'title' => 'Halaman Login',
-        'active' => 'login'
+        'title' => 'Halaman Login'
     ]);
 });
 
@@ -63,7 +61,6 @@ Route::get('/login', function () {
 Route::get('/categories', function () {
     return view('categories', [
         'title' => 'Post Categories',
-        'active' => 'categories',
         'categories' => Category::all()
     ]);
 });
@@ -83,3 +80,7 @@ Route::get('/dashboard', function () {
         'title' => 'Dashboard'
     ]);
 })->middleware('auth');
+
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
+
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
