@@ -19,6 +19,10 @@
         a {
             text-decoration: none;
         }
+
+        .invalid-feedback {
+            text-align: left;
+        }
     </style>
     <title>Internet Plankton {{ $title }}</title>
 
