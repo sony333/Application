@@ -1,5 +1,7 @@
 # Laravel-Projects
-This is my first project with laravel :
+
+This is my first project with Laravel that implements :  
+  
 **Routing and Controllers: Basics**
  - Callback Functions and Route::view()
  - Routing to a Single Controller Method
